@@ -4,6 +4,8 @@
 #include <string.h>
 #include "zfp.h"
 #include "param.h"
+#include <fstream>
+#include <iostream>
 
 /* compress or decompress array */
 static int
@@ -70,31 +72,26 @@ compress(double* array, int nx, int ny, int nz, double tolerance, int decompress
 
 int main()
 {
-
-
+	using namespace std;
+	ifstream f(M1, ios::in | ios::binary);
 /*creation matrice*/
 	int nx = NX;
 	int ny = NY;
 	int nz = NZ;
-	int taille = nx * ny * nz * sizeof(double);
-  	double* array = malloc(taille);
-	/*printf("\ndecompress : %d\n\n",*/compress(array, nx, ny, nz, ERREUR, 1)/*)*/;
-	
-	/*ouverture fichier*/
-	FILE* f = fopen(M2,"wb+");
-/*creation matrice*/
 	int i, j, k;
+	double a;
+  	int taille = nx * ny * nz;
+	double array[taille];
 	for (k = 0; k < nz; k++){
 		for (j = 0; j < ny; j++){
-			for (i = 0; i < nx; i++) {
-				fprintf(f,"%f\t",array[i + nx * (j + ny * k)]);
-				/*printf("%f\t",array[i + nx * (j + ny * k)]);*/
+			for (i = 0; i < nx; i++){
+				f.read((char *) &(array[i + nx * (j + ny * k)]), sizeof(double));  
 			}
-			/*printf("\n");*/
+
 		}
 	}
-	fclose(f);
-    free(array);
+	f.close();
+	compress(array, nx, ny, nz, ERREUR, 0);
 	return 0;
 }
 

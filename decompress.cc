@@ -4,6 +4,7 @@
 #include <string.h>
 #include "zfp.h"
 #include "param.h"
+#include <fstream>
 
 /* compress or decompress array */
 static int
@@ -71,34 +72,32 @@ compress(double* array, int nx, int ny, int nz, double tolerance, int decompress
 int main()
 {
 
-	FILE* f = fopen(M1,"rb");
+	using namespace std;
+	ofstream f(M2, ios::out | ios::binary);
 /*creation matrice*/
 	int nx = NX;
 	int ny = NY;
 	int nz = NZ;
+	int taille = nx * ny * nz;
+	double array[taille];
+	/*printf("\ndecompress : %d\n\n",*/compress(array, nx, ny, nz, ERREUR, 1)/*)*/;
+	
+	/*ouverture fichier*/
+
+/*creation matrice*/
 	int i, j, k;
-	double a;
-  int taille = nx * ny * nz * sizeof(double);
-  double* array = malloc(taille);
 	for (k = 0; k < nz; k++){
 		for (j = 0; j < ny; j++){
 			for (i = 0; i < nx; i++) {
-				if(fscanf(f,"%lf",&a)!=1)
-				{
-					printf("impossible de lire le float.\n");
-					return 0;
-				}
-
-				array[i + nx * (j + ny * k)] = (double)a;
-
-
+				f.write((char *) &(array[i + nx * (j + ny * k)]), sizeof(double));
+				//fprintf(f,"%f\t",array[i + nx * (j + ny * k)]);
+				/*printf("%f\t",array[i + nx * (j + ny * k)]);*/
 			}
+			/*printf("\n");*/
 		}
 	}
-	fclose(f);
-	
-	compress(array, nx, ny, nz, ERREUR, 0);
-    free(array);	
+	//fclose(f);
+	f.close();
 	return 0;
 }
 

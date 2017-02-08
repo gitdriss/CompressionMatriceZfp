@@ -4,17 +4,17 @@ TARGETS = evaluationDeLErreur genereraw compress decompress
 
 all: $(TARGETS)
 
-evaluationDeLErreur: evaluationDeLErreur.c
-	$(CC) -Wall evaluationDeLErreur.c -o evaluationDeLErreur -lm
+evaluationDeLErreur: evaluationDeLErreur.cc
+	$(CXX) -Wall evaluationDeLErreur.cc -o evaluationDeLErreur -lm
 
-genereraw: genereraw.c
-	$(CC) -Wall genereraw.c -o genereraw -lm
+genereraw: genereraw.cc
+	$(CXX) -Wall genereraw.cc -o genereraw -lm
 	
-compress: compress.c lib/libzfp.a
-	$(CC) $(CFLAGS) compress.c -L lib -lzfp -lm -o compress
+compress: compress.cc lib/libzfp.a
+	$(CXX) $(CFLAGS) compress.cc -L lib -lzfp -lm -o compress
 
-decompress: decompress.c lib/libzfp.a
-	$(CC) $(CFLAGS) decompress.c -L lib -lzfp -lm -o decompress
+decompress: decompress.cc lib/libzfp.a
+	$(CXX) $(CFLAGS) decompress.cc -L lib -lzfp -lm -o decompress
 
 clean:
 	rm -f $(TARGETS) fields.o
