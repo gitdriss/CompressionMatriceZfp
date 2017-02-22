@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "zfp.h"
-#include "param.h"
 #include <fstream>
 
 /* compress or decompress array */
@@ -71,33 +70,18 @@ compress(double* array, int nx, int ny, int nz, double tolerance, int decompress
 
 int main()
 {
-
 	using namespace std;
-	ofstream f(M2, ios::out | ios::binary);
-/*creation matrice*/
-	int nx = NX;
-	int ny = NY;
-	int nz = NZ;
-	int taille = nx * ny * nz;
-	double array[taille];
-	/*printf("\ndecompress : %d\n\n",*/compress(array, nx, ny, nz, ERREUR, 1)/*)*/;
-	
-	/*ouverture fichier*/
+	int taille;
+	FILE * fichier = fopen("tmp.txt", "r");
+	fscanf(fichier,"%d",&taille);
+	fclose(fichier);
+	double * t = (double *) malloc(sizeof(double)*taille);
 
-/*creation matrice*/
-	int i, j, k;
-	for (k = 0; k < nz; k++){
-		for (j = 0; j < ny; j++){
-			for (i = 0; i < nx; i++) {
-				f.write((char *) &(array[i + nx * (j + ny * k)]), sizeof(double));
-				//fprintf(f,"%f\t",array[i + nx * (j + ny * k)]);
-				/*printf("%f\t",array[i + nx * (j + ny * k)]);*/
-			}
-			/*printf("\n");*/
-		}
-	}
-	//fclose(f);
-	f.close();
+	compress(t, taille, 1, 1, 1e-2, 1);
+	ofstream f("matrix2.raw", ios::out | ios::binary);
+	for(int i = 0; i<taille;i++)
+		f.write((char *) &(t[i]), sizeof(double));
+	f.close();	
 	return 0;
 }
 

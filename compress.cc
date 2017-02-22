@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "zfp.h"
-#include "param.h"
 #include <fstream>
 #include <iostream>
 
@@ -73,25 +72,17 @@ compress(double* array, int nx, int ny, int nz, double tolerance, int decompress
 int main()
 {
 	using namespace std;
-	ifstream f(M1, ios::in | ios::binary);
-/*creation matrice*/
-	int nx = NX;
-	int ny = NY;
-	int nz = NZ;
-	int i, j, k;
-	double a;
-  	int taille = nx * ny * nz;
-	double array[taille];
-	for (k = 0; k < nz; k++){
-		for (j = 0; j < ny; j++){
-			for (i = 0; i < nx; i++){
-				f.read((char *) &(array[i + nx * (j + ny * k)]), sizeof(double));  
-			}
+	int taille;
+	FILE * fichier = fopen("tmp.txt", "r");
+	fscanf(fichier,"%d",&taille);
+	fclose(fichier);
+	double * t = (double *) malloc(sizeof(double)*taille);
 
-		}
-	}
+	ifstream f("matrix.raw", ios::in | ios::binary);
+	for(int i = 0; i<taille;i++)
+		f.read((char *) &(t[i]), sizeof(double));
 	f.close();
-	compress(array, nx, ny, nz, ERREUR, 0);
+	compress(t, taille, 1, 1, 1e-2, 0);
 	return 0;
 }
 

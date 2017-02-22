@@ -1,0 +1,27 @@
+include Config
+
+TARGETS = compress decompress
+
+all: $(TARGETS)
+
+compress: compress.cc lib/libzfp.a
+	$(CXX) $(CFLAGS) compress.cc -L lib -lzfp -lm -o compress
+
+decompress: decompress.cc lib/libzfp.a
+	$(CXX) $(CFLAGS) decompress.cc -L lib -lzfp -lm -o decompress
+
+clean:
+	rm -f $(TARGETS) fields.o
+	rm -f compressed.zfp
+	rm -f *.raw
+	
+run:
+	./exe 0
+	./compress > compressed.zfp
+	./decompress < compressed.zfp
+	./exe 1
+	
+reset: clean all
+
+	
+	
