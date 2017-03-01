@@ -82,7 +82,7 @@ int main()
 	for(int i = 0; i<taille;i++)
 		f.read((char *) &(t[i]), sizeof(double));
 	f.close();
-	compress(t, taille, 1, 1, 1e-2, 0);
+	compress(t, taille, 1, 1, 1, 0);
 	return 0;
 }
 

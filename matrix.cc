@@ -61,31 +61,40 @@ class Matrix{
 			f.close();
 
 			FILE * fichier = fopen("tmp.txt", "w");
-			fprintf(fichier,"%d",(int)matrix_.size());
+			fprintf(fichier,"%d %d %d %d",(int)matrix_.size(),size_[0],size_[1],size_[2]);
 			fclose(fichier);
 
 			return 0;
 		}
 		
 		int saveVTI(const string &path){
+			int taille,a,b,c;
+			FILE * fichier = fopen("tmp.txt", "r");
+			fscanf(fichier,"%d %d %d %d",&taille,&a,&b,&c);
+			fclose(fichier);
 			ifstream f2("matrix2.raw", ios::in | ios::binary);
-			for(int i = 0; i<(int)matrix_.size();i++)
-				f2.read((char *) &(matrix_[i]), sizeof(double));
-			f2.close();
+			for(int i = 0; i<(int)taille;i++){
+				double a;
+				f2.read((char *) &(a), sizeof(double));
+				matrix_.insert(matrix_.begin()+i, a);
+			}f2.close();
 			vtkSmartPointer<vtkImageData> imageData = 
 				vtkSmartPointer<vtkImageData>::New();
-				
+			
 			// WARNING on size_[2]
+			size_.insert(size_.begin()+0, a);
+			size_.insert(size_.begin()+1, b);
+			size_.insert(size_.begin()+2, c);
 			imageData->SetDimensions(size_[0], size_[1], size_[2]);
 			
 			vtkSmartPointer<vtkDoubleArray> array = 
 				vtkSmartPointer<vtkDoubleArray>::New();
-		
+
 			array->SetNumberOfTuples(size_[0] * size_[1] * size_[2]);
 			for(int i = 0; i < array->GetNumberOfTuples(); i++){
 				array->SetTuple1(i, (matrix_[i]));
 			}
-			
+
 			array->SetName("OutputValues");
 			imageData->GetPointData()->AddArray(array);
 			
@@ -212,7 +221,6 @@ int main(int argc, char **argv){
 	if( atoi(argv[1])==0){
 		m.loadVTI("test.vti");
 	}else{
-		m.loadVTI("test.vti");
 		m.saveVTI("test2.vti");
 	}
 	
