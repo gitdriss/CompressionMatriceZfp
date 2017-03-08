@@ -68,8 +68,7 @@ compress(double* array, int nx, int ny, int nz, double tolerance, int decompress
 }
 
 
-int main()
-{
+int main(int argc, char **argv){
 	using namespace std;
 	int taille;
 	FILE * fichier = fopen("tmp.txt", "r");
@@ -77,7 +76,7 @@ int main()
 	fclose(fichier);
 	double * t = (double *) malloc(sizeof(double)*taille);
 
-	compress(t, taille, 1, 1, 1, 1);
+	compress(t, taille, 1, 1, atoi(argv[1]), 1);
 	ofstream f("matrix2.raw", ios::out | ios::binary);
 	for(int i = 0; i<taille;i++)
 		f.write((char *) &(t[i]), sizeof(double));

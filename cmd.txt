@@ -1,7 +1,7 @@
 make
 make -f Makefile2
-./exe 0
-./compress > compressed.zfp
-./decompress < compressed.zfp
-./exe 1
+./exe 0 test.vti
+./compress 1e-3 > compressed.zfp
+./decompress 1e-3 < compressed.zfp
+./exe 1 test2.vti
 paraview test2.vti 

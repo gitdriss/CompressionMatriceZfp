@@ -69,8 +69,7 @@ compress(double* array, int nx, int ny, int nz, double tolerance, int decompress
 }
 
 
-int main()
-{
+int main(int argc, char **argv){
 	using namespace std;
 	int taille;
 	FILE * fichier = fopen("tmp.txt", "r");
@@ -82,7 +81,7 @@ int main()
 	for(int i = 0; i<taille;i++)
 		f.read((char *) &(t[i]), sizeof(double));
 	f.close();
-	compress(t, taille, 1, 1, 1, 0);
+	compress(t, taille, 1, 1, atoi(argv[1]), 0);
 	return 0;
 }
 

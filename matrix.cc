@@ -219,9 +219,9 @@ int main(int argc, char **argv){
 	
 	Matrix m;
 	if( atoi(argv[1])==0){
-		m.loadVTI("test.vti");
+		m.loadVTI(argv[2]);
 	}else{
-		m.saveVTI("test2.vti");
+		m.saveVTI(argv[2]);
 	}
 	
 	//m.getData();
