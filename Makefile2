@@ -1,11 +1,14 @@
 include Config
 
-TARGETS = compress decompress
+TARGETS = compress decompress evaluationerreur
 
 all: $(TARGETS)
 
 compress: compress.cc lib/libzfp.a
 	$(CXX) $(CFLAGS) compress.cc -L lib -lzfp -lm -o compress
+
+evaluationerreur: evaluation.cc lib/libzfp.a
+	$(CXX) $(CFLAGS) evaluation.cc -L lib -lzfp -lm -o evaluationerreur
 
 decompress: decompress.cc lib/libzfp.a
 	$(CXX) $(CFLAGS) decompress.cc -L lib -lzfp -lm -o decompress
@@ -14,12 +17,22 @@ clean:
 	rm -f $(TARGETS) fields.o
 	rm -f compressed.zfp
 	rm -f *.raw
-	
+	rm -f tmp.txt
+	rm -f test2.vti
+	rm -f test3.vti
+
+clean2:
+	rm -f CMakeCache.txt 
+	rm -f Makefile
+
 run:
-	./exe 0
-	./compress > compressed.zfp
-	./decompress < compressed.zfp
-	./exe 1
+	./exe 0 test.vti
+	./compress 1e-3 > compressed.zfp
+	./decompress 1e-3 < compressed.zfp
+	./evaluationerreur
+	./exe 1 test2.vti
+	./exe 2 test3.vti
+	rm -f tmp.txt
 	
 reset: clean all
 

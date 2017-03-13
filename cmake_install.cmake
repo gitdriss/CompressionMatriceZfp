@@ -1,4 +1,4 @@
-# Install script for directory: /tmp/CompressionMatriceZfp
+# Install script for directory: /home/sasl/eleves/main/3300162/Documents/MAIN4/Projet Renault/CompressionMatriceZfp
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -33,7 +33,7 @@ IF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 ENDIF(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 
 IF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/tmp/CompressionMatriceZfp/CMakeFiles/CMakeRelink.dir/exe")
+  FILE(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/sasl/eleves/main/3300162/Documents/MAIN4/Projet Renault/CompressionMatriceZfp/CMakeFiles/CMakeRelink.dir/exe")
 ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
 
 IF(CMAKE_INSTALL_COMPONENT)
@@ -42,7 +42,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/tmp/CompressionMatriceZfp/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/home/sasl/eleves/main/3300162/Documents/MAIN4/Projet Renault/CompressionMatriceZfp/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/tmp/CompressionMatriceZfp/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/home/sasl/eleves/main/3300162/Documents/MAIN4/Projet Renault/CompressionMatriceZfp/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)

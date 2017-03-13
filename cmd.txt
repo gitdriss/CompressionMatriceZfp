@@ -3,5 +3,15 @@ make -f Makefile2
 ./exe 0 test.vti
 ./compress 1e-3 > compressed.zfp
 ./decompress 1e-3 < compressed.zfp
+./evaluationerreur
 ./exe 1 test2.vti
+./exe 2 test3.vti
 paraview test2.vti 
+paraview test3.vti
+
+cmake .
+make
+make -f Makefile2
+make run -f Makefile2
+make clean -f Makefile2
+make clean2 -f Makefile2

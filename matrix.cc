@@ -67,17 +67,29 @@ class Matrix{
 			return 0;
 		}
 		
-		int saveVTI(const string &path){
+		int saveVTI(const string &path,int mod){
 			int taille,a,b,c;
 			FILE * fichier = fopen("tmp.txt", "r");
 			fscanf(fichier,"%d %d %d %d",&taille,&a,&b,&c);
 			fclose(fichier);
-			ifstream f2("matrix2.raw", ios::in | ios::binary);
-			for(int i = 0; i<(int)taille;i++){
-				double a;
-				f2.read((char *) &(a), sizeof(double));
-				matrix_.insert(matrix_.begin()+i, a);
-			}f2.close();
+			
+			if(mod==0){
+				ifstream f2("matrix2.raw", ios::in | ios::binary);
+				for(int i = 0; i<(int)taille;i++){
+					double a;
+					f2.read((char *) &(a), sizeof(double));
+					matrix_.insert(matrix_.begin()+i, a);
+				}f2.close();
+			}
+			else{
+				ifstream f2("matrix3.raw", ios::in | ios::binary);
+				for(int i = 0; i<(int)taille;i++){
+					double a;
+					f2.read((char *) &(a), sizeof(double));
+					matrix_.insert(matrix_.begin()+i, a);
+				}f2.close();
+			}
+			
 			vtkSmartPointer<vtkImageData> imageData = 
 				vtkSmartPointer<vtkImageData>::New();
 			
@@ -220,10 +232,14 @@ int main(int argc, char **argv){
 	Matrix m;
 	if( atoi(argv[1])==0){
 		m.loadVTI(argv[2]);
-	}else{
-		m.saveVTI(argv[2]);
 	}
-	
+	else{
+		if( atoi(argv[1])==1){
+			m.saveVTI(argv[2],0);
+		}else{
+			m.saveVTI(argv[2],1);
+		}
+	}
 	//m.getData();
 	//cout << m.matrix_[65512]<<endl ;
 	//m.saveVTI("test2.vti");	
