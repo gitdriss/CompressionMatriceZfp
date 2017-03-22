@@ -27,11 +27,9 @@ class Matrix{
 			imageDataReader_->SetFileName(path.data());
 			imageDataReader_->Update();
 			vtkImageData *imageData = imageDataReader_->GetOutput();
-			
+				
 			int* dims = imageData->GetDimensions();
   			// int dims[3]; // can't do this
- 
-  			
 
 			size_.push_back(dims[0]);
 			size_.push_back(dims[1]);
@@ -43,6 +41,14 @@ class Matrix{
 			vtkDataArray *arrayV = imageData->GetPointData()->GetArray("V");
 			vtkDataArray *arrayW = imageData->GetPointData()->GetArray("W");
 			vtkDataArray *arrayP = imageData->GetPointData()->GetArray("P");
+			if (!arrayU)
+				printf("Erreur U pas reconu\n");
+			if (!arrayV)
+				printf("Erreur V pas reconu\n");
+			if (!arrayW)
+				printf("Erreur W pas reconu\n");
+			if (!arrayP)
+				printf("Erreur P pas reconu\n");
 			
 			switch(arrayU->GetDataType()){
 				case VTK_DOUBLE:
@@ -58,6 +64,7 @@ class Matrix{
 					cerr << "Unsupported data type" << endl;
 					break;
 			}
+			
 			
 			switch(arrayV->GetDataType()){
 				case VTK_DOUBLE:

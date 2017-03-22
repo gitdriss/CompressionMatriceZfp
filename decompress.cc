@@ -77,7 +77,8 @@ int main(int argc, char **argv){
 	double * t = (double *) malloc(sizeof(double)*taille);
 
 	compress(t, taille, 1, 1, atoi(argv[1]), 1);
-	ofstream f("matrix2.raw", ios::out | ios::binary);
+	ofstream f(argv[2], ios::out | ios::binary);
+	//ofstream f("matrix2.raw", ios::out | ios::binary);
 	for(int i = 0; i<taille;i++)
 		f.write((char *) &(t[i]), sizeof(double));
 	f.close();	

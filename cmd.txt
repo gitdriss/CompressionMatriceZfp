@@ -15,3 +15,17 @@ make -f Makefile2
 make run -f Makefile2
 make clean -f Makefile2
 make clean2 -f Makefile2
+
+
+Nouvelle version :
+
+./exe 0 nouvelEssai.vti
+./compress 0.001 matrixU.raw > compressed.zfp
+./decompress 0.001 matrix2U.raw < compressed.zfp
+./compress 0.001 matrixV.raw > compressed.zfp
+./decompress 0.001 matrix2V.raw < compressed.zfp
+./compress 0.001 matrixW.raw > compressed.zfp
+./decompress 0.001 matrix2W.raw < compressed.zfp
+./compress 0.001 matrixP.raw > compressed.zfp
+./decompress 0.001 matrix2P.raw < compressed.zfp
+./exe 1 nouvelEssai2.vti
