@@ -9,6 +9,7 @@ make -f Makefile2
 paraview test2.vti 
 paraview test3.vti
 
+
 cmake .
 make
 make -f Makefile2
