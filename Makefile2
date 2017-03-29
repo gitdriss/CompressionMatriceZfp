@@ -5,13 +5,13 @@ TARGETS = compress decompress evaluationerreur
 all: $(TARGETS)
 
 compress: compress.cc lib/libzfp.a
-	$(CXX) $(CFLAGS) compress.cc -L lib -lzfp -lm -o compress
+	$(CXX) $(CFLAGS2) compress.cc -L lib -lzfp -lm -o compress
 
 evaluationerreur: evaluation.cc lib/libzfp.a
-	$(CXX) $(CFLAGS) evaluation.cc -L lib -lzfp -lm -o evaluationerreur
+	$(CXX) $(CFLAGS2) evaluation.cc -L lib -lzfp -lm -o evaluationerreur
 
 decompress: decompress.cc lib/libzfp.a
-	$(CXX) $(CFLAGS) decompress.cc -L lib -lzfp -lm -o decompress
+	$(CXX) $(CFLAGS2) decompress.cc -L lib -lzfp -lm -o decompress
 
 clean:
 	rm -f $(TARGETS) fields.o
@@ -24,14 +24,65 @@ clean:
 clean2:
 	rm -f CMakeCache.txt 
 	rm -f Makefile
+	
+#gerris
 
-run:
-	./exe 0 test.vti
-	./compress 1e-3 > compressed.zfp
-	./decompress 1e-3 < compressed.zfp
-	./evaluationerreur
-	./exe 1 test2.vti
-	./exe 2 test3.vti
+run: 
+	./exe 0 nouvelEssai.vti
+	./compress 1 matrixU.raw > compressed.zfp
+	./decompress 1 matrix2U.raw < compressed.zfp
+	./compress 1 matrixV.raw > compressed.zfp
+	./decompress 1 matrix2V.raw < compressed.zfp
+	./compress 1 matrixW.raw > compressed.zfp
+	./decompress 1 matrix2W.raw < compressed.zfp
+	./compress 1 matrixP.raw > compressed.zfp
+	./decompress 1 matrix2P.raw < compressed.zfp
+	./exe 1 nouvelEssai2.vti
+	./evaluationerreur matrixU.raw matrix2U.raw matrix3U.raw
+	./evaluationerreur matrixV.raw matrix2V.raw matrix3V.raw
+	./evaluationerreur matrixW.raw matrix2W.raw matrix3W.raw
+	./evaluationerreur matrixP.raw matrix2P.raw matrix3P.raw
+	./exe 2 nouvelEssai3.vti
+	rm -f tmp.txt
+
+#Renault grande precision
+
+run1:
+	./exe 0 testRenault.vti
+	./compress 0 matrixU.raw > compressed.zfp
+	./decompress 0 matrix2U.raw < compressed.zfp
+	./compress 0 matrixV.raw > compressed.zfp
+	./decompress 0 matrix2V.raw < compressed.zfp
+	./compress 0 matrixW.raw > compressed.zfp
+	./decompress 0 matrix2W.raw < compressed.zfp
+	./compress 0 matrixP.raw > compressed.zfp
+	./decompress 0 matrix2P.raw < compressed.zfp
+	./exe 1 testRenault2.vti
+	./evaluationerreur matrixU.raw matrix2U.raw matrix3U.raw
+	./evaluationerreur matrixV.raw matrix2V.raw matrix3V.raw
+	./evaluationerreur matrixW.raw matrix2W.raw matrix3W.raw
+	./evaluationerreur matrixP.raw matrix2P.raw matrix3P.raw
+	./exe 2 testRenault3.vti
+	rm -f tmp.txt
+
+#Renault petite precision
+
+run2:
+	./exe 0 testRenault.vti
+	./compress 1 matrixU.raw > compressed.zfp
+	./decompress 1 matrix2U.raw < compressed.zfp
+	./compress 1 matrixV.raw > compressed.zfp
+	./decompress 1 matrix2V.raw < compressed.zfp
+	./compress 1 matrixW.raw > compressed.zfp
+	./decompress 1 matrix2W.raw < compressed.zfp
+	./compress 1 matrixP.raw > compressed.zfp
+	./decompress 1 matrix2P.raw < compressed.zfp
+	./exe 1 testRenault2.vti
+	./evaluationerreur matrixU.raw matrix2U.raw matrix3U.raw
+	./evaluationerreur matrixV.raw matrix2V.raw matrix3V.raw
+	./evaluationerreur matrixW.raw matrix2W.raw matrix3W.raw
+	./evaluationerreur matrixP.raw matrix2P.raw matrix3P.raw
+	./exe 2 testRenault3.vti
 	rm -f tmp.txt
 	
 reset: clean all

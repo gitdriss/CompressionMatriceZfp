@@ -30,10 +30,10 @@ SET(CMAKE_C_TARGET_INCLUDE_PATH
   "/usr/include/vtk-6.0"
   "/usr/include/python2.7"
   "/usr/include/x86_64-linux-gnu"
-  "/usr/include/freetype2"
   "/usr/include/libxml2"
   "/usr/lib/openmpi/include"
   "/usr/lib/openmpi/include/openmpi"
+  "/usr/include/freetype2"
   "/usr/include/tcl8.6"
   "."
   )
