@@ -76,8 +76,8 @@ int main(int argc, char **argv){
 	fscanf(fichier,"%d",&taille);
 	fclose(fichier);
 	double * t = (double *) malloc(sizeof(double)*taille);
-
-	ifstream f("matrix.raw", ios::in | ios::binary);
+	ifstream f(argv[2], ios::in | ios::binary);
+	//ifstream f("matrix.raw", ios::in | ios::binary);
 	for(int i = 0; i<taille;i++)
 		f.read((char *) &(t[i]), sizeof(double));
 	f.close();
