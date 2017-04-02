@@ -73,7 +73,8 @@ Renaultversion :
     ./exe 2 testRenault3.vti
 
 
-Ancienne version :
+Ancienne version
+------------
 
     make
     make -f Makefile2
