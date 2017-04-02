@@ -33,9 +33,9 @@ Clean :
 
 
 
-Nouvelle version (en detail):
+Nouvelle version (en detail) :
 
-Gerris :
+Données Gerris :
 
     ./exe 0 nouvelEssai.vti
     ./compress 0 matrixU.raw > compressed.zfp
@@ -54,7 +54,7 @@ Gerris :
     ./exe 2 nouvelEssai3.vti
 
 
-Renaultversion :
+Données Renault :
 
     ./exe 0 testRenault.vti
     ./compress 0 matrixU.raw > compressed.zfp
