@@ -9,8 +9,42 @@ Dans le cadre de notre formation d’ingénieur, nous participons à un projet p
 Le groupe industriel de construction automobile Renault s’est proposé comme client d’un projet, qui concerne la compression de données. En effet, le client est amené, dans le cadre d’une étude des écoulements à traiter des terraoctets de données qui sont très difficiles à stocker.
 Le but du projet est donc de trouver une méthode pour compresser les matrices de données (matrice contenant des vecteurs avec la vitesse dans les 3 dimensions et la pression). L’objectif est de fournir un logiciel informatique avec une interface utilisateur de modulation des réglages. Ce logiciel permettrait le stockage des matrices 3D contenant des doubles correspondant à des données d’expériences aérodynamiques sur des voitures Renault.
 
+INSTALLATION DE L ENVIRONNEMENT
+------------
+- Developpement
+Nous utilisons les bibliotheques standart en C/C++, de plus nous utilisons ces librairies
+
+
+librairie cmake :
+
+    sudo apt-get install cmake
+    
+librairie libxt-dev (utilisé par vtk):
+
+    sudo apt-get install libxt-dev
+
+librairie vtk (comptez quelques minutes pour la 5eme commande):
+
+    cd ~/Bureau
+    mkdir vtkbuild
+    cd vtkbuild
+    cmake ~/Téléchargements/VTK-7.1.1/
+    cmake --build .
+    cmake --build . --target install
+
+- Visuaisation
+Nous utilisons le logiciel paraview :
+
+    http://www.paraview.org/download/
+    v5.3
+    Paraview Binary Installers
+    Linux 64 bits
+    ...
+    Download
+
 UTILISATION
 ------------
+Il est necessaire d'instaler tout l'environement pour l'utilisation (voir section precedent).
 
 Compilation :
 
