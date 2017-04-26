@@ -9,7 +9,7 @@ Dans le cadre de notre formation d’ingénieur, nous participons à un projet p
 Le groupe industriel de construction automobile Renault s’est proposé comme client d’un projet, qui concerne la compression de données. En effet, le client est amené, dans le cadre d’une étude des écoulements à traiter des terraoctets de données qui sont très difficiles à stocker.
 Le but du projet est donc de trouver une méthode pour compresser les matrices de données (matrice contenant des vecteurs avec la vitesse dans les 3 dimensions et la pression). L’objectif est de fournir un logiciel informatique avec une interface utilisateur de modulation des réglages. Ce logiciel permettrait le stockage des matrices 3D contenant des doubles correspondant à des données d’expériences aérodynamiques sur des voitures Renault.
 
-INSTALLATION DE L ENVIRONNEMENT
+INSTALLATION DE L'ENVIRONNEMENT
 ------------
 - Developpement
 
