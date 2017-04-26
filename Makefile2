@@ -29,19 +29,16 @@ clean2:
 
 run: 
 	./exe 0 nouvelEssai.vti
-	./compress 1 matrixU.raw > compressed.zfp
-	./decompress 1 matrix2U.raw < compressed.zfp
-	./compress 1 matrixV.raw > compressed.zfp
-	./decompress 1 matrix2V.raw < compressed.zfp
-	./compress 1 matrixW.raw > compressed.zfp
-	./decompress 1 matrix2W.raw < compressed.zfp
-	./compress 1 matrixP.raw > compressed.zfp
-	./decompress 1 matrix2P.raw < compressed.zfp
+	./compress 1 matrixU.raw > compressed1.zfp
+	./decompress 1 matrix2U.raw < compressed1.zfp
+	./compress 1 matrixV.raw > compressed2.zfp
+	./decompress 1 matrix2V.raw < compressed2.zfp
+	./compress 1 matrixW.raw > compressed2.zfp
+	./decompress 1 matrix2W.raw < compressed2.zfp
+	./compress 1 matrixP.raw > compressed3.zfp
+	./decompress 1 matrix2P.raw < compressed3.zfp
 	./exe 1 nouvelEssai2.vti
-	./evaluationerreur matrixU.raw matrix2U.raw matrix3U.raw
-	./evaluationerreur matrixV.raw matrix2V.raw matrix3V.raw
-	./evaluationerreur matrixW.raw matrix2W.raw matrix3W.raw
-	./evaluationerreur matrixP.raw matrix2P.raw matrix3P.raw
+	./evaluationerreur matrixU.raw matrix2U.raw matrixV.raw matrix2V.raw matrixW.raw matrix2W.raw matrix3.raw
 	./exe 2 nouvelEssai3.vti
 	rm -f tmp.txt
 
@@ -49,19 +46,16 @@ run:
 
 run1:
 	./exe 0 testRenault.vti
-	./compress 0 matrixU.raw > compressed.zfp
-	./decompress 0 matrix2U.raw < compressed.zfp
-	./compress 0 matrixV.raw > compressed.zfp
-	./decompress 0 matrix2V.raw < compressed.zfp
-	./compress 0 matrixW.raw > compressed.zfp
-	./decompress 0 matrix2W.raw < compressed.zfp
-	./compress 0 matrixP.raw > compressed.zfp
-	./decompress 0 matrix2P.raw < compressed.zfp
+	./compress 0 matrixU.raw > compressed1.zfp
+	./decompress 0 matrix2U.raw < compressed1.zfp
+	./compress 0 matrixV.raw > compressed2.zfp
+	./decompress 0 matrix2V.raw < compressed2.zfp
+	./compress 0 matrixW.raw > compressed3.zfp
+	./decompress 0 matrix2W.raw < compressed3.zfp
+	./compress 0 matrixP.raw > compressed4.zfp
+	./decompress 0 matrix2P.raw < compressed4.zfp
 	./exe 1 testRenault2.vti
-	./evaluationerreur matrixU.raw matrix2U.raw matrix3U.raw
-	./evaluationerreur matrixV.raw matrix2V.raw matrix3V.raw
-	./evaluationerreur matrixW.raw matrix2W.raw matrix3W.raw
-	./evaluationerreur matrixP.raw matrix2P.raw matrix3P.raw
+	./evaluationerreur matrixU.raw matrix2U.raw matrixV.raw matrix2V.raw matrixW.raw matrix2W.raw matrix3.raw
 	./exe 2 testRenault3.vti
 	rm -f tmp.txt
 
@@ -69,19 +63,16 @@ run1:
 
 run2:
 	./exe 0 testRenault.vti
-	./compress 1 matrixU.raw > compressed.zfp
-	./decompress 1 matrix2U.raw < compressed.zfp
-	./compress 1 matrixV.raw > compressed.zfp
-	./decompress 1 matrix2V.raw < compressed.zfp
-	./compress 1 matrixW.raw > compressed.zfp
-	./decompress 1 matrix2W.raw < compressed.zfp
-	./compress 1 matrixP.raw > compressed.zfp
-	./decompress 1 matrix2P.raw < compressed.zfp
+	./compress 1 matrixU.raw > compressed1.zfp
+	./decompress 1 matrix2U.raw < compressed1.zfp
+	./compress 1 matrixV.raw > compressed2.zfp
+	./decompress 1 matrix2V.raw < compressed2.zfp
+	./compress 1 matrixW.raw > compressed3.zfp
+	./decompress 1 matrix2W.raw < compressed3.zfp
+	./compress 1 matrixP.raw > compressed4.zfp
+	./decompress 1 matrix2P.raw < compressed4.zfp
 	./exe 1 testRenault2.vti
-	./evaluationerreur matrixU.raw matrix2U.raw matrix3U.raw
-	./evaluationerreur matrixV.raw matrix2V.raw matrix3V.raw
-	./evaluationerreur matrixW.raw matrix2W.raw matrix3W.raw
-	./evaluationerreur matrixP.raw matrix2P.raw matrix3P.raw
+	./evaluationerreur matrixU.raw matrix2U.raw matrixV.raw matrix2V.raw matrixW.raw matrix2W.raw matrix3.raw
 	./exe 2 testRenault3.vti
 	rm -f tmp.txt
 	

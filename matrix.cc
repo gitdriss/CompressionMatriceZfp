@@ -157,7 +157,7 @@ class Matrix{
 				}f2.close();
 			}
 			else{
-				ifstream f2("matrix3U.raw", ios::in | ios::binary);
+				ifstream f2("matrix3.raw", ios::in | ios::binary);
 				for(int i = 0; i<(int)taille;i++){
 					double a;
 					f2.read((char *) &(a), sizeof(double));
@@ -173,14 +173,7 @@ class Matrix{
 					matrixV_.insert(matrixV_.begin()+i, a);
 				}f3.close();
 			}
-			else{
-				ifstream f3("matrix3V.raw", ios::in | ios::binary);
-				for(int i = 0; i<(int)taille;i++){
-					double a;
-					f3.read((char *) &(a), sizeof(double));
-					matrixV_.insert(matrixV_.begin()+i, a);
-				}f3.close();
-			}
+			
 			
 			if(mod==0){
 				ifstream f3("matrix2W.raw", ios::in | ios::binary);
@@ -190,14 +183,7 @@ class Matrix{
 					matrixW_.insert(matrixW_.begin()+i, a);
 				}f3.close();
 			}
-			else{
-				ifstream f3("matrix3W.raw", ios::in | ios::binary);
-				for(int i = 0; i<(int)taille;i++){
-					double a;
-					f3.read((char *) &(a), sizeof(double));
-					matrixW_.insert(matrixW_.begin()+i, a);
-				}f3.close();
-			}
+			
 			
 			if(mod==0){
 				ifstream f4("matrix2P.raw", ios::in | ios::binary);
@@ -207,65 +193,81 @@ class Matrix{
 					matrixP_.insert(matrixP_.begin()+i, a);
 				}f4.close();
 			}
-			else{
-				ifstream f4("matrix3P.raw", ios::in | ios::binary);
-				for(int i = 0; i<(int)taille;i++){
-					double a;
-					f4.read((char *) &(a), sizeof(double));
-					matrixP_.insert(matrixP_.begin()+i, a);
-				}f4.close();
-			}
+			
+
+			
+
 			vtkSmartPointer<vtkImageData> imageData = 
 				vtkSmartPointer<vtkImageData>::New();
 			
-			// WARNING on size_[2]
-			size_.insert(size_.begin()+0, a);
-			size_.insert(size_.begin()+1, b);
-			size_.insert(size_.begin()+2, c);
-			imageData->SetDimensions(size_[0], size_[1], size_[2]);
 			
-			vtkSmartPointer<vtkDoubleArray> array = 
-				vtkSmartPointer<vtkDoubleArray>::New();
+				// WARNING on size_[2]
+				size_.insert(size_.begin()+0, a);
+				size_.insert(size_.begin()+1, b);
+				size_.insert(size_.begin()+2, c);
+				imageData->SetDimensions(size_[0], size_[1], size_[2]);
 
-			vtkSmartPointer<vtkDoubleArray> array2 = 
-				vtkSmartPointer<vtkDoubleArray>::New();
-				
-			vtkSmartPointer<vtkDoubleArray> array3 = 
-				vtkSmartPointer<vtkDoubleArray>::New();
-				
-			vtkSmartPointer<vtkDoubleArray> array4 = 
-				vtkSmartPointer<vtkDoubleArray>::New();
-				
-			array->SetNumberOfTuples(size_[0] * size_[1] * size_[2]);
-			for(int i = 0; i < array->GetNumberOfTuples(); i++){
-				array->SetTuple1(i, (matrixU_[i])); //matrixU au lieu de matrix
-			}
 
-			array2->SetNumberOfTuples(size_[0] * size_[1] * size_[2]);
-			for(int i = 0; i < array2->GetNumberOfTuples(); i++){
-				array2->SetTuple1(i, (matrixP_[i])); //matrixP au lieu de matrix
-			}
-
-			array3->SetNumberOfTuples(size_[0] * size_[1] * size_[2]);
-			for(int i = 0; i < array3->GetNumberOfTuples(); i++){
-				array3->SetTuple1(i, (matrixV_[i])); //matrixW au lieu de matrix
-			}
-
-			array4->SetNumberOfTuples(size_[0] * size_[1] * size_[2]);
-			for(int i = 0; i < array4->GetNumberOfTuples(); i++){
-				array4->SetTuple1(i, (matrixW_[i])); //matrixW au lieu de matrix
-			}
-
-			array->SetName("U");
-			array2->SetName("P");
-			array3->SetName("V");
-			array4->SetName("W");
-
-			imageData->GetPointData()->AddArray(array);
-			imageData->GetPointData()->AddArray(array2);
-			imageData->GetPointData()->AddArray(array3);
-			imageData->GetPointData()->AddArray(array4);
+			if(mod==0){
 			
+				vtkSmartPointer<vtkDoubleArray> array = 
+					vtkSmartPointer<vtkDoubleArray>::New();
+
+				vtkSmartPointer<vtkDoubleArray> array2 = 
+					vtkSmartPointer<vtkDoubleArray>::New();
+				
+				vtkSmartPointer<vtkDoubleArray> array3 = 
+					vtkSmartPointer<vtkDoubleArray>::New();
+				
+				vtkSmartPointer<vtkDoubleArray> array4 = 
+					vtkSmartPointer<vtkDoubleArray>::New();
+				
+				array->SetNumberOfTuples(size_[0] * size_[1] * size_[2]);
+				for(int i = 0; i < array->GetNumberOfTuples(); i++){
+					array->SetTuple1(i, (matrixU_[i])); //matrixU au lieu de matrix
+				}
+
+				array2->SetNumberOfTuples(size_[0] * size_[1] * size_[2]);
+				for(int i = 0; i < array2->GetNumberOfTuples(); i++){
+					array2->SetTuple1(i, (matrixP_[i])); //matrixP au lieu de matrix
+				}
+
+				array3->SetNumberOfTuples(size_[0] * size_[1] * size_[2]);
+				for(int i = 0; i < array3->GetNumberOfTuples(); i++){
+					array3->SetTuple1(i, (matrixV_[i])); //matrixW au lieu de matrix
+				}
+
+				array4->SetNumberOfTuples(size_[0] * size_[1] * size_[2]);
+				for(int i = 0; i < array4->GetNumberOfTuples(); i++){
+					array4->SetTuple1(i, (matrixW_[i])); //matrixW au lieu de matrix
+				}
+
+				array->SetName("U");
+				array2->SetName("P");
+				array3->SetName("V");
+				array4->SetName("W");
+
+				imageData->GetPointData()->AddArray(array);
+				imageData->GetPointData()->AddArray(array2);
+				imageData->GetPointData()->AddArray(array3);
+				imageData->GetPointData()->AddArray(array4);
+			
+			}
+
+			else{
+				vtkSmartPointer<vtkDoubleArray> array = 
+					vtkSmartPointer<vtkDoubleArray>::New();
+
+				array->SetNumberOfTuples(size_[0] * size_[1] * size_[2]);
+				for(int i = 0; i < array->GetNumberOfTuples(); i++){
+					array->SetTuple1(i, (matrixU_[i])); //matrixU au lieu de matrix
+				}
+
+				array->SetName("Erreur");
+
+				imageData->GetPointData()->AddArray(array);
+			}
+
 			vtkSmartPointer<vtkXMLImageDataWriter> writer = 
 				vtkSmartPointer<vtkXMLImageDataWriter>::New();
 			writer->SetFileName(path.data());
