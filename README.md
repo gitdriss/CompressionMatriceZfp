@@ -12,6 +12,7 @@ Le but du projet est donc de trouver une méthode pour compresser les matrices d
 INSTALLATION DE L ENVIRONNEMENT
 ------------
 - Developpement
+
 Nous utilisons les bibliotheques standart en C/C++, de plus nous utilisons ces librairies
 
 
@@ -32,7 +33,8 @@ librairie vtk (comptez quelques minutes pour la 5eme commande):
     cmake --build .
     cmake --build . --target install
 
-- Visuaisation
+- Visualisation
+
 Nous utilisons le logiciel paraview :
 
     http://www.paraview.org/download/
