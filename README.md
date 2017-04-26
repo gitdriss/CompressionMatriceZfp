@@ -13,7 +13,7 @@ INSTALLATION DE L ENVIRONNEMENT
 ------------
 - Developpement
 
-Nous utilisons les bibliotheques standart en C/C++, de plus nous utilisons ces librairies
+Nous utilisons les bibliothèques standard en C/C++, de plus nous utilisons ces librairies
 
 
 librairie cmake :
@@ -46,7 +46,7 @@ Nous utilisons le logiciel paraview :
 
 UTILISATION
 ------------
-Il est necessaire d'instaler tout l'environement pour l'utilisation (voir section precedent).
+Il est nécessaire d'installer tout l'environnement pour l'utilisation (voir section précédente).
 
 Compilation :
 
@@ -55,7 +55,7 @@ Compilation :
     make -f Makefile2
 
 
-Execution :
+Exécution :
 
     make run -f Makefile2
     make run2 -f Makefile2
@@ -69,7 +69,7 @@ Clean :
 
 
 
-Execution Nouvelle version (en detail) :
+Exécution Nouvelle version (en detail) :
 ------------
 Données Gerris :
 
