@@ -23,8 +23,20 @@ librairie cmake :
 librairie libxt-dev (utilisé par vtk):
 
     sudo apt-get install libxt-dev
+    
+librairie OPENGL_gl_LIBRAR (utilisé par vtk):
 
+    sudo apt-get install libxext-dev
+    sudo apt-get install libpng-dev
+    sudo apt-get install libimlib2-dev
+    sudo apt-get install libglew-dev
+    sudo apt-get install libxrender-dev
+    sudo apt-get install libxrandr-dev
+    sudo apt-get install libglm-dev
+    
 librairie vtk (comptez quelques minutes pour la 5eme commande):
+
+    Télécharger VTK-7.1.1 thttp://www.vtk.org/download/
 
     cd ~/Bureau
     mkdir vtkbuild
